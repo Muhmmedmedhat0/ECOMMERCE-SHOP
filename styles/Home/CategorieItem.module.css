@@ -3,6 +3,7 @@
   margin: 3px;
   height: 70vh;
   position: relative;
+  cursor: pointer;
 }
 
 .img {

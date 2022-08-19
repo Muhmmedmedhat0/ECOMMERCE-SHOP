@@ -7,14 +7,14 @@ import {
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 import style from '../../styles/Home/Product.module.css';
-function Product({ product }) {
+function Product({ product, loading, error }) {
   return (
     <div className={style.container}>
       <div className={style.circle}></div>
-      <img src={product.img} alt={product.id} className={style.img} />
+      <img src={product.img} alt={product._id} className={style.img} />
       <div className={style.info}>
         <div className={style.icon}>
-          <Link href="/products/1">
+          <Link href={`${product._id}`}>
             <FontAwesomeIcon icon={faCartPlus} />
           </Link>
         </div>

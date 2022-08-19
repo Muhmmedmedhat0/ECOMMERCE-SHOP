@@ -41,7 +41,7 @@ function Product() {
               <div
                 className={style.filterColor}
                 style={{ backgroundColor: 'gray' }}
-              ></div>
+              ></div> 
               <div
                 className={style.filterColor}
                 style={{ backgroundColor: 'darkblue' }}

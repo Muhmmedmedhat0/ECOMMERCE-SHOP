@@ -6,7 +6,12 @@ import Navbar from '../../components/Home/Navbar';
 import NewsLetter from '../../components/Home/NewsLetter';
 import Products from '../../components/Home/Products';
 import style from '../../styles/Products/ProductFilter.module.css';
-function ProductList() {
+
+function category() {
+  // get the pathname from the router
+  const router = useRouter();
+  const { category } = router.query;
+
   const [filters, setFilters] = useState({});
   const handleFilter = (e) => {
     const value = e.target.value;
@@ -57,8 +62,8 @@ function ProductList() {
             </select>
             <select
               className={style.select}
-              name="sizes"
-              id="sizes"
+              name="size"
+              id="size"
               defaultValue={'DEFAULT'}
               onChange={handleFilter}
             >
@@ -104,11 +109,10 @@ function ProductList() {
           </div>
         </div>
       </div>
-      <Products filters={filters} sort={sort} />
+      <Products category={category} filters={filters} sort={sort} />
       <NewsLetter />
       <Footer />
     </section>
   );
 }
-
-export default ProductList;
+export default category;
