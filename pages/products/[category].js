@@ -31,80 +31,30 @@ function category() {
         <div className={style.filterContainer}>
           <div className={style.filter}>
             <span className={style.filterText}>Filter Products</span>
-            <select
-              className={style.select}
-              name="color"
-              id="color"
-              defaultValue={'DEFAULT'}
-              onChange={handleFilter}
-            >
-              <option className={style.option} value="DEFAULT" disabled>
-                Color
-              </option>
-              <option className={style.option} value="White">
-                White
-              </option>
-              <option className={style.option} value="Black">
-                Black
-              </option>
-              <option className={style.option} value="Red">
-                Red
-              </option>
-              <option className={style.option} value="Blue">
-                Blue
-              </option>
-              <option className={style.option} value="Yellow">
-                Yellow
-              </option>
-              <option className={style.option} value="Green">
-                Green
-              </option>
+            <select className={style.select} name="color" id="color" defaultValue={'DEFAULT'} onChange={handleFilter}>
+              <option className={style.option} value="DEFAULT" disabled>Color</option>
+              <option className={style.option} value="White">White</option>
+              <option className={style.option} value="Black">Black</option>
+              <option className={style.option} value="Red">Red</option>
+              <option className={style.option} value="Blue">Blue</option>
+              <option className={style.option} value="Yellow">Yellow</option>
+              <option className={style.option} value="Green">Green</option>
             </select>
-            <select
-              className={style.select}
-              name="size"
-              id="size"
-              defaultValue={'DEFAULT'}
-              onChange={handleFilter}
-            >
-              <option className={style.option} value="DEFAULT" disabled>
-                Sizes
-              </option>
-              <option className={style.option} value="XS">
-                XS
-              </option>
-              <option className={style.option} value="S">
-                S
-              </option>
-              <option className={style.option} value="M">
-                M
-              </option>
-              <option className={style.option} value="L">
-                L
-              </option>
-              <option className={style.option} value="XL">
-                XL
-              </option>
+            <select className={style.select} name="size" id="size" defaultValue={'DEFAULT'} onChange={handleFilter}>
+              <option className={style.option} value="DEFAULT" disabled>Sizes</option>
+              <option className={style.option} value="XS">XS</option>
+              <option className={style.option} value="S">S</option>
+              <option className={style.option} value="M">M</option>
+              <option className={style.option} value="L">L</option>
+              <option className={style.option} value="XL">XL</option>
             </select>
           </div>
           <div className={style.filter}>
             <span className={style.filterText}>Sort Products</span>
-            <select
-              className={style.select}
-              name="sizes"
-              id="sizes"
-              defaultValue={'newest'}
-              onChange={handleSort}
-            >
-              <option className={style.option} value="newest" disabled>
-                Newest
-              </option>
-              <option className={style.option} value="ascending">
-                Price (ascending)
-              </option>
-              <option className={style.option} value="descending">
-                Price (descending)
-              </option>
+            <select className={style.select} name="sizes" id="sizes" defaultValue={'newest'} onChange={handleSort}>
+              <option className={style.option} value="newest" disabled>Newest</option>
+              <option className={style.option} value="ascending">Price (ascending)</option>
+              <option className={style.option} value="descending">Price (descending)</option>
             </select>
           </div>
         </div>

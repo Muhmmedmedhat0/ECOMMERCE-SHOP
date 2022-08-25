@@ -15,11 +15,7 @@ function Product() {
       <Navbar />
       <div className={style.wrapper}>
         <div className={style.imgContainer}>
-          <img
-            className={style.Image}
-            src="https://i.ibb.co/S6qMxwr/jean.jpg"
-            alt="product"
-          />
+          <img className={style.Image} src="https://i.ibb.co/S6qMxwr/jean.jpg" alt="product"/>
         </div>
         <div className={style.infoContainer}>
           <h1 className={style.infoTitle}>Denim Jumpsuit</h1>
@@ -32,29 +28,14 @@ function Product() {
           </div>
           <span className={style.infoPrice}>$ 20</span>
           <div className={style.filterContainer}>
-            <div className={style.filter}>
-              <span className={style.filterTitle}>Color</span>
-              <div
-                className={style.filterColor}
-                style={{ backgroundColor: 'black' }}
-              ></div>
-              <div
-                className={style.filterColor}
-                style={{ backgroundColor: 'gray' }}
-              ></div> 
-              <div
-                className={style.filterColor}
-                style={{ backgroundColor: 'darkblue' }}
-              ></div>
+            <div className={style.filter}><span className={style.filterTitle}>Color</span>
+            <div className={style.filterColor} style={{ backgroundColor: 'black' }}></div>
+              <div className={style.filterColor} style={{ backgroundColor: 'gray' }}></div> 
+              <div className={style.filterColor} style={{ backgroundColor: 'darkblue' }}></div>
             </div>
             <div className={style.filter}>
               <span className={style.filterTitle}>Size</span>
-              <select
-                className={style.filterSize}
-                name="sizes"
-                id="sizes"
-                defaultValue={'XS'}
-              >
+              <select className={style.filterSize} name="sizes" id="sizes" defaultValue={'XS'}>
                 <option disabled>Sizes</option>
                 <option value="XS">XS</option>
                 <option value="S">S</option>
@@ -70,9 +51,7 @@ function Product() {
               <span className={style.amount}>1</span>
               <FontAwesomeIcon icon={faPlus} className={style.icon} />
             </div>
-            <button className={style.addToCartButton}>
-              <Link href="/cart">ADD TO CART</Link>
-            </button>
+            <button className={style.addToCartButton}><Link href="/cart">ADD TO CART</Link></button>
           </div>
         </div>
       </div>

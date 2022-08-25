@@ -8,34 +8,35 @@ import { fetchProducts } from '../../app/slices/productsSlice';
 function Products({ category, filters, sort }) {
   const [data, setData] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
-
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
   useEffect(() => {
-    dispatch(fetchProducts(category));
-    setData(data);
+    dispatch(fetchProducts());
+    setData(products);
   }, [dispatch, category]);
 
-  useEffect(() => {
-    category &&
-      setFilterProducts(
-        products.filter((product) => {
-          Object.entries(filters).every(([key, value]) => {
-            product[key].includes(value);
-          });
-        })
-      );
-  }, [category, filters, sort]);
+  console.log(data && data);
+
+  // useEffect(() => {
+  //   category &&
+  //     setFilterProducts(
+  //       products.filter((product) => {
+  //         Object.entries(filters).every(([key, value]) => {
+  //           product[key].includes(value);
+  //         });
+  //       })
+  //     );
+  // }, [category, filters, sort]);
   return (
     <section className={style.container}>
-      {filterProducts.map((product) => (
+      {/* {filterProducts.map((product) => (
         <Product
           key={product.id}
           product={product}
           // loading={loading}
           // error={error}
         />
-      ))}
+      ))} */}
     </section>
   );
 }
