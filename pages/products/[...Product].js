@@ -35,13 +35,13 @@ function Product() {
             </div>
             <div className={style.filter}>
               <span className={style.filterTitle}>Size</span>
-              <select className={style.filterSize} name="sizes" id="sizes" defaultValue={'XS'}>
+              <select className={style.filterSize} name="sizes" id="sizes" defaultValue={'xs'}>
                 <option disabled>Sizes</option>
-                <option value="XS">XS</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
+                <option value="xs">XS</option>
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="l">L</option>
+                <option value="xl">XL</option>
               </select>
             </div>
           </div>

@@ -44,7 +44,7 @@ function Slider() {
               <h1 className={style.title}>{item.title}</h1>
               <div className={style.description}>{item.desc}</div>
               <button className={style.button}>
-                <Link href="/products">SHOP NOW</Link>
+                <Link href="#">SHOP NOW</Link>
               </button>
             </div>
           </div>

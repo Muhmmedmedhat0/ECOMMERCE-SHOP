@@ -11,6 +11,7 @@ function category() {
   // get the pathname from the router
   const router = useRouter();
   const { category } = router.query;
+  // console.log(category);
 
   const [filters, setFilters] = useState({});
   const handleFilter = (e) => {
@@ -18,10 +19,12 @@ function category() {
     const name = e.target.name;
     setFilters({ ...filters, [name]: value });
   };
+  // console.log(filters);
   const [sort, setSort] = useState('newest');
   const handleSort = (e) => {
     setSort(e.target.value);
   };
+  // console.log(sort);
   return (
     <section>
       <Annoucement />
@@ -33,20 +36,20 @@ function category() {
             <span className={style.filterText}>Filter Products</span>
             <select className={style.select} name="color" id="color" defaultValue={'DEFAULT'} onChange={handleFilter}>
               <option className={style.option} value="DEFAULT" disabled>Color</option>
-              <option className={style.option} value="White">White</option>
-              <option className={style.option} value="Black">Black</option>
-              <option className={style.option} value="Red">Red</option>
-              <option className={style.option} value="Blue">Blue</option>
-              <option className={style.option} value="Yellow">Yellow</option>
-              <option className={style.option} value="Green">Green</option>
+              <option className={style.option} value="white">White</option>
+              <option className={style.option} value="black">Black</option>
+              <option className={style.option} value="red">Red</option>
+              <option className={style.option} value="blue">Blue</option>
+              <option className={style.option} value="yellow">Yellow</option>
+              <option className={style.option} value="green">Green</option>
             </select>
             <select className={style.select} name="size" id="size" defaultValue={'DEFAULT'} onChange={handleFilter}>
               <option className={style.option} value="DEFAULT" disabled>Sizes</option>
-              <option className={style.option} value="XS">XS</option>
-              <option className={style.option} value="S">S</option>
-              <option className={style.option} value="M">M</option>
-              <option className={style.option} value="L">L</option>
-              <option className={style.option} value="XL">XL</option>
+              <option className={style.option} value="xs">XS</option>
+              <option className={style.option} value="s">S</option>
+              <option className={style.option} value="m">M</option>
+              <option className={style.option} value="l">L</option>
+              <option className={style.option} value="xl">XL</option>
             </select>
           </div>
           <div className={style.filter}>

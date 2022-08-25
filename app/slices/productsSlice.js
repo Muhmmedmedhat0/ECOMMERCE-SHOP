@@ -7,12 +7,11 @@ export const fetchProducts = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const response = await fetch(
-        category
-          ? `http://localhost:8080/api/products?category=${category}`
+        category ? `http://localhost:8080/api/products?category=${category}`
           : 'http://localhost:8080/api/products'
       );
       const data = await response.json();
-      return data;
+      return data.products;
     } catch (error) {
       rejectWithValue(error);
     }
