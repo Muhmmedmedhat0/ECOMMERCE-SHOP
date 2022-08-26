@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Annoucement from '../../components/Home/Annoucement';
@@ -17,6 +17,21 @@ function Product() {
   const { products, loading, error } = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const id = router.asPath.split('/')[3];
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState('');
+  const [size, setSize] = useState('');
+  const handleQuantity = (type) => {
+    if (type === 'dec') {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
+  const handleCart = (e) => {
+    e.preventDefault();
+    console.log('click');
+    
+  }
   useEffect(() => {
     dispatch(fetchProduct(id));
   }, [id]);
@@ -34,34 +49,29 @@ function Product() {
           <div className={style.infoContainer}>
             <h1 className={style.infoTitle}>{products?.title}</h1>
             <div className={style.infoDescription}>{products?.description}</div>
-            <span className={style.infoPrice}>{products?.price}</span>
+            <span className={style.infoPrice}>{products?.price} $</span>
             <div className={style.filterContainer}>
-              <div className={style.filter}><span className={style.filterTitle}>Color</span>
-                <div className={style.filterColor} style={{ backgroundColor: 'black' }}></div>
-                <div className={style.filterColor} style={{ backgroundColor: 'gray' }}></div>
-                <div className={style.filterColor} style={{ backgroundColor: 'darkblue' }}></div>
+              <div className={style.filter}>
+                <span className={style.filterTitle}>color</span>
+                {products?.color?.map((c) =><div onClick={() => setColor(c)} key={c} className={style.filterColor} style={{ backgroundColor: `${c}` }} ></div>)}
               </div>
               <div className={style.filter}>
-                <span className={style.filterTitle}>Size</span>
-                <select className={style.filterSize} name="sizes" id="sizes" defaultValue={'xs'}>
-                  <option disabled>Sizes</option>
-                  <option value="xs">XS</option>
-                  <option value="s">S</option>
-                  <option value="m">M</option>
-                  <option value="l">L</option>
-                  <option value="xl">XL</option>
+                <span className={style.filterTitle}>size</span>
+                <select onChange={(e) => setSize(e.target.value)} className={style.filterSize} name="sizes" id="sizes" defaultValue={'DEFAULT'} >
+                  <option disabled value="DEFAULT"> choase </option>
+                  {products?.size?.map((s) => <option key={s} value={`${s}`}> {s} </option>)}
                 </select>
               </div>
             </div>
             <div className={style.addToCart}>
               <div className={style.amountContainer}>
-                <FontAwesomeIcon icon={faMinus} className={style.icon} />
-                <span className={style.amount}>1</span>
-                <FontAwesomeIcon icon={faPlus} className={style.icon} />
+                <FontAwesomeIcon icon={faMinus} className={style.icon} onClick={() => handleQuantity('dec')} />
+                <span className={style.amount}>{quantity}</span>
+                <FontAwesomeIcon icon={faPlus} className={style.icon} onClick={() => handleQuantity('inc')} />
               </div>
-                <button className={style.addToCartButton}>
-                  <Link href="/cart">ADD TO CART</Link>
-                </button>
+              <button className={style.addToCartButton} onClick={handleCart}>
+                <Link  href="#">ADD TO CART</Link>
+              </button>
             </div>
           </div>
         </div>
