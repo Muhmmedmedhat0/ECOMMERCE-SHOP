@@ -9,7 +9,6 @@ function Products({ category, filters, sort }) {
   const [filterProducts, setFilteredProducts] = useState([]);
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
-
   // fetch products by category
   useEffect(() => {
     dispatch(fetchProducts(category));
@@ -45,11 +44,28 @@ function Products({ category, filters, sort }) {
   }, [sort]);
   return (
     <section className={style.container}>
-      {loading ? 'Loading....' : ''}
-      {
-        category ? filterProducts.map((product) => <Product key={product.id} product={product} loading={loading} error={error} />)
-          : products.map((product) => <Product key={product.id} product={product} loading={loading} error={error} />)
-      }
+      {loading
+        ? 'Loading....'
+        : category
+        ? filterProducts.map((product) => (
+            <Product
+              category={category}
+              key={product._id}
+              product={product}
+              loading={loading}
+              error={error}
+            />
+          ))
+        : Array.from(products)
+            .slice(0, 8)
+            .map((product) => (
+              <Product
+                key={product._id}
+                product={product}
+                loading={loading}
+                error={error}
+              />
+            ))}
     </section>
   );
 }

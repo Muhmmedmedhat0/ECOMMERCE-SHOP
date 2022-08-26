@@ -7,7 +7,7 @@ import NewsLetter from '../../components/Home/NewsLetter';
 import Products from '../../components/Home/Products';
 import style from '../../styles/Products/ProductFilter.module.css';
 
-function category() {
+function Category() {
   // get the pathname from the router
   const router = useRouter();
   const { category } = router.query;
@@ -54,8 +54,8 @@ function category() {
           </div>
           <div className={style.filter}>
             <span className={style.filterText}>Sort Products</span>
-            <select className={style.select} name="sizes" id="sizes" defaultValue={'newest'} onChange={handleSort}>
-              <option className={style.option} value="newest" disabled>Newest</option>
+            <select className={style.select} name="sort" id="sort" defaultValue={'DEFAULT'} onChange={handleSort}>
+              <option className={style.option} value="newest">Newest</option>
               <option className={style.option} value="ascending">Price (ascending)</option>
               <option className={style.option} value="descending">Price (descending)</option>
             </select>
@@ -68,4 +68,4 @@ function category() {
     </section>
   );
 }
-export default category;
+export default Category;
