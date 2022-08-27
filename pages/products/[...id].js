@@ -39,16 +39,10 @@ function Product() {
     <section>
       <Annoucement />
       <Navbar />
-      {loading ? (
-        'Loading ....'
-      ) : (
+      {loading ? ('Loading ....') : (
         <div className={style.wrapper}>
           <div className={style.imgContainer}>
-            <img
-              className={style.Image}
-              src={products?.img}
-              alt={products?.title}
-            />
+            <img className={style.Image} src={products?.img} alt={products?.title}/>
           </div>
           <div className={style.infoContainer}>
             <h1 className={style.infoTitle}>{products?.title}</h1>
@@ -57,53 +51,24 @@ function Product() {
             <div className={style.filterContainer}>
               <div className={style.filter}>
                 <span className={style.filterTitle}>color</span>
-                {products?.color?.map((c) => (
-                  <div
-                    onClick={() => setColor(c)}
-                    key={c}
-                    className={style.filterColor}
-                    style={{ backgroundColor: `${c}` }}
-                  ></div>
-                ))}
+                {products?.color?.map((c) => <div onClick={() => setColor(c)} key={c} className={style.filterColor} style={{ backgroundColor: `${c}` }} ></div> )}
               </div>
               <div className={style.filter}>
                 <span className={style.filterTitle}>size</span>
                 <select
-                  onChange={(e) => setSize(e.target.value)}
-                  className={style.filterSize}
-                  name="sizes"
-                  id="sizes"
-                  defaultValue={'DEFAULT'}
-                >
-                  <option disabled value="DEFAULT">
-                    {' '}
-                    choase{' '}
-                  </option>
-                  {products?.size?.map((s) => (
-                    <option key={s} value={`${s}`}>
-                      {' '}
-                      {s}{' '}
-                    </option>
-                  ))}
-                </select>
+                  onChange={(e) => setSize(e.target.value)} className={style.filterSize} name="sizes" id="sizes" defaultValue={'DEFAULT'} >
+                  <option disabled value="DEFAULT">choase</option>
+                  {products?.size?.map((s) => <option key={s} value={`${s}`}> {s} </option>)}</select>
               </div>
             </div>
             <div className={style.addToCart}>
               <div className={style.amountContainer}>
-                <FontAwesomeIcon
-                  icon={faMinus}
-                  className={style.icon}
-                  onClick={() => handleQuantity('dec')}
-                />
+                <FontAwesomeIcon icon={faMinus} className={style.icon} onClick={() => handleQuantity('dec')} />
                 <span className={style.amount}>{quantity}</span>
-                <FontAwesomeIcon
-                  icon={faPlus}
-                  className={style.icon}
-                  onClick={() => handleQuantity('inc')}
-                />
+                <FontAwesomeIcon icon={faPlus} className={style.icon} onClick={() => handleQuantity('inc')} />
               </div>
               <button className={style.addToCartButton} onClick={handleCart}>
-                <Link href="#">ADD TO CART</Link>
+                ADD TO CART
               </button>
             </div>
           </div>

@@ -18,7 +18,7 @@ function Cart() {
             style={{ backgroundColor: 'transparent', color: 'black' }}
             className={style.topButton}
           >
-            <Link href="/products">CONTINUE SHOPPING</Link>
+            <Link href="#">CONTINUE SHOPPING</Link>
           </button>
           <div className={style.topTexts}>
             <span className={style.topText}>Shopping Bag(2)</span>
