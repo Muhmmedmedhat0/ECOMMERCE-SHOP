@@ -1,13 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faMagnifyingGlass,
-  faCartArrowDown,
-} from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { FiShoppingCart } from 'react-icons/fi';
 import style from '../../styles/Home/Navbar.module.css';
+import { useSelector } from 'react-redux';
 
 function Navbar() {
+  const { cardQuantity } = useSelector((state) => state.cart);
   return (
     <section className={style.container}>
       <div className={style.wrapper}>
@@ -35,9 +35,9 @@ function Navbar() {
           </div>
           <div className={style.right_menuItem}>
             <Link href="/cart">
-              <FontAwesomeIcon icon={faCartArrowDown} className={style.cart} />
+              <FiShoppingCart fontSize={'20px'} />
             </Link>
-            <span className={style.menuItem_count}>1</span>
+            <span className={style.menuItem_count}>{cardQuantity}</span>
           </div>
         </div>
       </div>

@@ -10,11 +10,12 @@ import NewsLetter from '../../components/Home/NewsLetter';
 import style from '../../styles/Products/Product.module.css';
 import { fetchProduct } from '../../app/slices/productsSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../../app/slices/cartSlice';
 
 function Product() {
   // get the pathname from the router
   const router = useRouter();
-  const { products, loading, error } = useSelector((state) => state.products);
+  const { products, loading } = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const id = router.asPath.split('/')[3];
   const [quantity, setQuantity] = useState(1);
@@ -29,9 +30,8 @@ function Product() {
   };
   const handleCart = (e) => {
     e.preventDefault();
-    console.log('click');
-    
-  }
+    dispatch(addToCart({ ...products, quantity, color, size }));
+  };
   useEffect(() => {
     dispatch(fetchProduct(id));
   }, [id]);
@@ -44,7 +44,11 @@ function Product() {
       ) : (
         <div className={style.wrapper}>
           <div className={style.imgContainer}>
-            <img className={style.Image} src={products?.img} alt={products?.title}/>
+            <img
+              className={style.Image}
+              src={products?.img}
+              alt={products?.title}
+            />
           </div>
           <div className={style.infoContainer}>
             <h1 className={style.infoTitle}>{products?.title}</h1>
@@ -53,24 +57,53 @@ function Product() {
             <div className={style.filterContainer}>
               <div className={style.filter}>
                 <span className={style.filterTitle}>color</span>
-                {products?.color?.map((c) =><div onClick={() => setColor(c)} key={c} className={style.filterColor} style={{ backgroundColor: `${c}` }} ></div>)}
+                {products?.color?.map((c) => (
+                  <div
+                    onClick={() => setColor(c)}
+                    key={c}
+                    className={style.filterColor}
+                    style={{ backgroundColor: `${c}` }}
+                  ></div>
+                ))}
               </div>
               <div className={style.filter}>
                 <span className={style.filterTitle}>size</span>
-                <select onChange={(e) => setSize(e.target.value)} className={style.filterSize} name="sizes" id="sizes" defaultValue={'DEFAULT'} >
-                  <option disabled value="DEFAULT"> choase </option>
-                  {products?.size?.map((s) => <option key={s} value={`${s}`}> {s} </option>)}
+                <select
+                  onChange={(e) => setSize(e.target.value)}
+                  className={style.filterSize}
+                  name="sizes"
+                  id="sizes"
+                  defaultValue={'DEFAULT'}
+                >
+                  <option disabled value="DEFAULT">
+                    {' '}
+                    choase{' '}
+                  </option>
+                  {products?.size?.map((s) => (
+                    <option key={s} value={`${s}`}>
+                      {' '}
+                      {s}{' '}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
             <div className={style.addToCart}>
               <div className={style.amountContainer}>
-                <FontAwesomeIcon icon={faMinus} className={style.icon} onClick={() => handleQuantity('dec')} />
+                <FontAwesomeIcon
+                  icon={faMinus}
+                  className={style.icon}
+                  onClick={() => handleQuantity('dec')}
+                />
                 <span className={style.amount}>{quantity}</span>
-                <FontAwesomeIcon icon={faPlus} className={style.icon} onClick={() => handleQuantity('inc')} />
+                <FontAwesomeIcon
+                  icon={faPlus}
+                  className={style.icon}
+                  onClick={() => handleQuantity('inc')}
+                />
               </div>
               <button className={style.addToCartButton} onClick={handleCart}>
-                <Link  href="#">ADD TO CART</Link>
+                <Link href="#">ADD TO CART</Link>
               </button>
             </div>
           </div>
