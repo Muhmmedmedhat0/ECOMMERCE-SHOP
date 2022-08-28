@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Annoucement from '../../components/Home/Annoucement';
 import Footer from '../../components/Home/Footer';
@@ -8,9 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import NewsLetter from '../../components/Home/NewsLetter';
 import style from '../../styles/Products/Product.module.css';
-import { fetchProduct } from '../../app/slices/productsSlice';
+import { fetchProduct } from '../../app/slices/products';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../app/slices/cartSlice';
+import { addToCart } from '../../app/slices/cart';
 
 function Product() {
   // get the pathname from the router

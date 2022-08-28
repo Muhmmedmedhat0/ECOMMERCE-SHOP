@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faCartPlus,faMagnifyingGlass,faHeart} from '@fortawesome/free-solid-svg-icons';
 import style from '../../styles/Home/Product.module.css';
-function Product({ product, category,loading, error }) {
+function Product({ product, category }) {
   return (
     <div className={style.container}>
       <div className={style.circle}></div>

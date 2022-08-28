@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { popularProducts } from './data';
 import Product from './Product';
 import style from '../../styles/Home/Products.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../../app/slices/productsSlice';
+import { fetchProducts } from '../../app/slices/products';
 
 function Products({ category, filters, sort }) {
   const [filterProducts, setFilteredProducts] = useState([]);
