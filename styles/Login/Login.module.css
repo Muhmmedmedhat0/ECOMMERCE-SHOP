@@ -44,6 +44,14 @@
   cursor: pointer;
   margin-bottom: 10px;
 }
+.button:disabled{
+  background-color: white;
+  color: teal;
+  cursor: not-allowed;
+}
+.error{
+  color: red;
+}
 .link {
   margin: 5px 0px;
   font-size: 15px;
