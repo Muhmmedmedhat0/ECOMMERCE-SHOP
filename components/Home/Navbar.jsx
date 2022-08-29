@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 
 function Navbar() {
   const { cardQuantity } = useSelector((state) => state.cart);
+  const { userInfo } = useSelector((state) => state.user);
+
   return (
     <section className={style.container}>
       <div className={style.wrapper}>
@@ -31,7 +33,11 @@ function Navbar() {
             <Link href="/register">Register</Link>
           </div>
           <div className={style.right_menuItem}>
-            <Link href="/login">Login</Link>
+            {userInfo.userName ? (
+              <Link href="/login">{userInfo.userName}</Link>
+            ) : (
+              <Link href="/login">LogIn</Link>
+            )}
           </div>
           <div className={style.right_menuItem}>
             <Link href="/cart">

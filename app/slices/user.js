@@ -21,7 +21,7 @@ export const logIn = createAsyncThunk('user/logIn', async (info, thunkAPI) => {
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    userInfo: null,
+    userInfo: false,
     loading: null,
     error: null,
   },
