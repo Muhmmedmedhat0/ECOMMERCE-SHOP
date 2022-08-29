@@ -3,7 +3,7 @@ import Link from 'next/link';
 import style from '../../styles/Login/Login.module.css';
 import { logIn } from '../../app/slices/user';
 import { useDispatch, useSelector} from 'react-redux';
-
+import { useRouter } from 'next/router';
 
 function Login() {
   const { userInfo, loading } = useSelector((state) => state.user);
@@ -14,7 +14,13 @@ function Login() {
   const handleClick = (e) => {
     e.preventDefault(); 
     dispatch(logIn(info));
-}
+  }
+  const router = useRouter();
+  (function RedirectToHome() {
+    if (userInfo && userInfo !== null && !userInfo.message) {
+      router.push('/')
+    } 
+  })()
   return (
     <section className={style.container}>
       <div className={style.wrapper}>
@@ -26,7 +32,7 @@ function Login() {
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </span>
-          {userInfo ? <span className={style.error}>{userInfo.message}</span>: ''}
+          {userInfo ? <span className={style.error}>{userInfo.message}</span> : ''}
           <button className={style.button} disabled={loading} onClick={handleClick}>LOG IN</button>
           <Link className={style.link} href="/register">CREATE A NEW ACCOUNT</Link>
         </form>
